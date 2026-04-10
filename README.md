@@ -1,4 +1,4 @@
-## Installation
+## Installation 
 
 ```sh
 pacman -S --needed git fzf
