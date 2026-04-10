@@ -52,8 +52,8 @@
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKW0ooE2hLuk64i95rZyfIynDzL7hfA2PxPb5UQ3j82u p47hf1nd3r"
         ];
         packages = with pkgs; [];
-      }
-    }
+      };
+    };
   };
 
   environment.systemPackages = with pkgs; [];
