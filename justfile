@@ -8,4 +8,5 @@ ssh-copy-id:
 
 corvus-switch:
     nix run nixpkgs#nixos-rebuild -- switch --flake .#corvus \
-        --target-host p47hf1nd3r@nixos
+        --target-host p47hf1nd3r@nixos \
+        --sudo
