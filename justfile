@@ -3,10 +3,9 @@ push:
     git commit -m $(uuidgen)
     git push
 
-corvus-ssh-copy-id:
-    ssh-copy-id -i ~/.ssh/corvus-p47hf1nd3r.pub root@nixos
+ssh-copy-id:
+    ssh-copy-id root@nixos
 
 corvus-switch:
     nix run nixpkgs#nixos-rebuild -- switch --flake .#corvus \
-        --target-host root@nixos \
-        --sudo
+        --target-host p47hf1nd3r@nixos
