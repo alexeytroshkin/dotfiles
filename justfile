@@ -11,3 +11,9 @@ corvus-switch:
         --target-host p47hf1nd3r@corvus \
         --sudo \
         --ask-sudo-password
+
+switch host:
+    nix run nixpkgs#nixos-rebuild -- switch --flake .#{{host}} \
+        --target-host p47hf1nd3r@{{host}} \
+        --sudo \
+        --ask-sudo-password
