@@ -14,6 +14,14 @@
     };
   };
 
+  nix = {
+    settings = {
+      trusted-users = [
+        "p47hf1nd3r"
+      ];
+    };
+  };
+
   networking = {
     hostName = "corvus";
     # Configure network connections interactively with nmcli or nmtui.
