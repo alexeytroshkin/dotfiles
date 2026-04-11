@@ -4,7 +4,6 @@
   services.beszel = {
     hub = {
       enable = true;
-      openFirewall = true;
     };
   };
 }
