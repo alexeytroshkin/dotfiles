@@ -27,8 +27,9 @@
           system = "aarch64-linux";
           specialArgs = { inherit inputs; };
           modules = [
-            ./hosts/corvus/configuration.nix
             nixos-hardware.nixosModules.raspberry-pi-4
+            ./hosts/corvus/configuration.nix
+            ./modules/beszel
           ];
         };
       };
