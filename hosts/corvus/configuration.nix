@@ -39,7 +39,7 @@
       # allowedUDPPorts = [ ... ];
       # Or disable the firewall altogether.
       # enable = false;
-    }
+    };
   };
 
   time.timeZone = "Europe/Moscow";
