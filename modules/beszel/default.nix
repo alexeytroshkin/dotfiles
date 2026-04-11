@@ -7,5 +7,9 @@
       host = "0.0.0.0";
       port = 8090;
     };
+    agent = {
+      enable = true;
+      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHOaZwkyoUgXRr+UZg80fODDRuFBdhM3VpXGhhbWtIg+";
+    }
   };
 }
