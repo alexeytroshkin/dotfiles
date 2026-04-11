@@ -6,12 +6,6 @@ push:
 ssh-copy-id:
     ssh-copy-id root@nixos
 
-corvus-switch:
-    nix run nixpkgs#nixos-rebuild -- switch --flake .#corvus \
-        --target-host p47hf1nd3r@corvus \
-        --sudo \
-        --ask-sudo-password
-
 switch host:
     nix run nixpkgs#nixos-rebuild -- switch --flake .#{{host}} \
         --target-host p47hf1nd3r@{{host}} \

@@ -9,7 +9,9 @@
     };
     agent = {
       enable = true;
-      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHOaZwkyoUgXRr+UZg80fODDRuFBdhM3VpXGhhbWtIg+";
+      environment = {
+        KEY = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHOaZwkyoUgXRr+UZg80fODDRuFBdhM3VpXGhhbWtIg+";
+      };
     };
   };
 }
