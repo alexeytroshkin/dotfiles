@@ -33,7 +33,7 @@
       ensureProfiles = {
         profiles = {
           "DOM.RU-OUlA-5G" = {
-            conenction = {
+            connection = {
               id = "DOM.RU-OUlA-5G";
               type = "wifi";
               interface-name = "wlan0";
