@@ -31,6 +31,9 @@
     wireless = {
       enable = true;
       secretsFile = config.sops.templates."wireless_secrets".path;
+      extraConfig = ''
+        country=RU
+      '';
       networks."DOM.RU-OUlA-5G".psk = "ext:DOM_RU_OUlA_5G";
     };
     firewall = {
