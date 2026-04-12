@@ -28,17 +28,29 @@
 
   networking = {
     hostName = "corvus";
-    wireless = {
+    networkmanager = {
       enable = true;
-      secretsFile = config.sops.templates."wireless_secrets".path;
-      extraConfig = ''
-        country=RU
-      '';
-      networks."DOM.RU-OUlA-5G" = {
-        extraConfig = ''
-          ieee80211w=0
-        '';
-        psk = "ext:DOM_RU_OUlA_5G";
+      ensureProfiles = {
+        profiles = {
+          "DOM.RU-OUlA-5G" = {
+            conenction = {
+              id = "DOM.RU-OUlA-5G";
+              type = "wifi";
+              interface-name = "wlan0";
+            };
+            wifi = {
+              mode = "infrastructure";
+              ssid = "DOM.RU-OUlA-5G";
+            };
+            wifi-security = {
+              auth-alg = "open";
+              key-mgmt = "wpa-psk";
+              psk = "$DOM_RU_OUlA_5G";
+            };
+            ipv4.method = "auto";
+            ipv6.method = "auto";
+          };
+        };
       };
     };
     firewall = {
@@ -47,6 +59,10 @@
         8090
       ];
     };
+  };
+
+  systemd.services.NetworkManager = {
+    serviceConfig.EnvironmentFile = config.sops.templates."networkmanager_env".path;
   };
 
   time.timeZone = "Europe/Moscow";
