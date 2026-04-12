@@ -32,6 +32,9 @@
       allowedTCPPorts = [
         # beszel
         8090
+        # nginx
+        80
+        443
       ];
     };
   };
