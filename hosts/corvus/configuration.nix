@@ -30,7 +30,7 @@
     hostName = "corvus";
     wireless = {
       enable = true;
-      extraConfig = "include ${config.sops.templates."wireless.con".path}";
+      extraConfig = "include ${config.sops.templates."wireless.conf".path}";
     };
     firewall = {
       allowedTCPPorts = [ 
