@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -11,6 +13,7 @@
       self,
       nixpkgs,
       nixos-hardware,
+      sops-nix,
       ...
     }:
     {
@@ -28,6 +31,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             nixos-hardware.nixosModules.raspberry-pi-4
+            sops-nix.nixosModules.sops
             ./hosts/corvus/configuration.nix
             ./modules/beszel
           ];
