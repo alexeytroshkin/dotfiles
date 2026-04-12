@@ -3,8 +3,8 @@ push:
     git commit -m $(uuidgen)
     git push
 
-sops:
-    EDITOR="code --wait" nix run nixpkgs#sops -- ./modules/sops/secrets/.env
+sops file:
+    EDITOR="code --wait" nix run nixpkgs#sops -- ./modules/sops/secrets/{{file}}
 
 rebuild command host:
     nix run nixpkgs#nixos-rebuild -- {{command}} --flake .#{{host}} \
