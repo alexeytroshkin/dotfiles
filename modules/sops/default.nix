@@ -13,7 +13,7 @@
       };
     };
     templates = {
-      "wireless_secrets" = {
+      "networkmanager_env" = {
         content = ''
           DOM_RU_OUlA_5G=${config.sops.placeholder.wifi_psk}
         '';
