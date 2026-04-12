@@ -1,8 +1,12 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports = [
+    inputs.nixos-hardware.nixosModules.raspberry-pi-4
+    inputs.sops-nix.nixosModules.sops
     ./hardware-configuration.nix
+    ./services.nix
+    ./../../modules/sops
   ];
 
   boot = {
@@ -24,33 +28,19 @@
 
   networking = {
     hostName = "corvus";
-    # Configure network connections interactively with nmcli or nmtui.
-    networkmanager.enable = true;
-
-    # Configure network proxy if necessary
-    # networking.proxy.default = "http://user:password@proxy:port/";
-    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
+    wireless = {
+      enable = true;
+      extraConfig = "include ${config.sops.templates."wireless.con".path}";
+    };
     firewall = {
       allowedTCPPorts = [ 
         # beszel
         8090
       ];
-      # allowedUDPPorts = [ ... ];
-      # Or disable the firewall altogether.
-      # enable = false;
     };
   };
 
   time.timeZone = "Europe/Moscow";
-
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkb.options in tty.
-  # };
 
   users = {
     users = {
@@ -69,19 +59,6 @@
   };
 
   environment.systemPackages = with pkgs; [];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  services = {
-    # Enable the OpenSSH daemon.
-    openssh.enable = true;
-  };
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you

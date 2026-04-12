@@ -29,12 +29,7 @@
         corvus = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
           specialArgs = { inherit inputs; };
-          modules = [
-            nixos-hardware.nixosModules.raspberry-pi-4
-            sops-nix.nixosModules.sops
-            ./hosts/corvus/configuration.nix
-            ./modules/beszel
-          ];
+          modules = [ ./hosts/corvus/configuration.nix ];
         };
       };
     };
