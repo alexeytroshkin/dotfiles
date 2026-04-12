@@ -30,7 +30,8 @@
     hostName = "corvus";
     wireless = {
       enable = true;
-      extraConfig = "include ${config.sops.templates."wireless.conf".path}";
+      secretsFile = config.sops.templates."wireless_secrets".path;
+      networks."DOM.RU-OUlA-5G".psk = "ext:DOM_RU_OUlA_5G";
     };
     firewall = {
       allowedTCPPorts = [ 
