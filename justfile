@@ -11,3 +11,6 @@ switch host:
         --target-host p47hf1nd3r@{{host}} \
         --sudo \
         --ask-sudo-password
+
+sops file:
+    EDITOR="code --wait" nix run nixpkgs#sops -- secrets/{{file}}
